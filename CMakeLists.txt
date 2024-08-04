@@ -18,20 +18,20 @@ add_library(minhook STATIC ${MINHOOK_SOURCES} ${MINHOOK_HEADERS})
 target_include_directories(minhook PUBLIC minhook)
 
 # ImGUI
-file(GLOB IMGUI_SOURCES ImGui/*.cpp ImGui/impls/*.cpp)
-file(GLOB IMGUI_HEADERS ImGui/*.h ImGui/impls/*.h ImGui/fonts/*.h)
-if(WIN32)
-    file(GLOB IMGUI_PLATFORM_SOURCES ImGui/impls/windows/*.cpp)
-    file(GLOB IMGUI_PLATFORM_HEADERS ImGui/impls/windows/*.h)
-elseif(UNIX AND NOT APPLE)
-    file(GLOB IMGUI_PLATFORM_SOURCES ImGui/impls/linux/*.cpp)
-    file(GLOB IMGUI_PLATFORM_HEADERS ImGui/impls/linux/*.h)
-endif()
-list(APPEND IMGUI_SOURCES ${IMGUI_PLATFORM_SOURCES})
-list(APPEND IMGUI_HEADERS ${IMGUI_PLATFORM_HEADERS})
+set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/thirdparty/imgui)
+file(GLOB IMGUI_SOURCES 
+		${IMGUI_DIR}/*.cpp 
+		${IMGUI_DIR}/backends/imgui_impl_dx11.cpp
+		${IMGUI_DIR}/backends/imgui_impl_dx12.cpp
+		${IMGUI_DIR}/backends/imgui_impl_win32.cpp)
+file(GLOB IMGUI_HEADERS 
+		${IMGUI_DIR}/*.h 
+		${IMGUI_DIR}/backends/imgui_impl_dx11.h
+		${IMGUI_DIR}/backends/imgui_impl_dx12.h
+		${IMGUI_DIR}/backends/imgui_impl_win32.h)
 
 add_library(imgui STATIC ${IMGUI_SOURCES} ${IMGUI_HEADERS})
-target_include_directories(imgui PUBLIC ImGui)
+target_include_directories(imgui PUBLIC ${IMGUI_DIR} ${IMGUI_DIR}/backends)
 target_compile_definitions(imgui PRIVATE IMGUI_DEFINE_MATH_OPERATORS)
 
 # UniversalHookX

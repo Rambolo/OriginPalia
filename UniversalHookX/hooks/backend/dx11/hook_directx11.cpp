@@ -14,8 +14,8 @@
 
 #include "hook_directx11.hpp"
 
-#include "impls/windows/imgui_impl_dx11.h"
-#include "impls/windows/imgui_impl_win32.h"
+#include "backends/imgui_impl_dx11.h"
+#include "backends/imgui_impl_win32.h"
 #include "MinHook.h"
 
 #include "utils/utils.hpp"

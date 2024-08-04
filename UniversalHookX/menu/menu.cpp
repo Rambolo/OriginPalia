@@ -1,9 +1,9 @@
 #include "menu.hpp"
 
 #include "imgui.h"
-#include "impls/windows/imgui_impl_win32.h"
+#include "backends/imgui_impl_win32.h"
 
-#include "fonts/fonts.h"
+#include "utils/fonts.h"
 
 #include "menu.hpp"
 

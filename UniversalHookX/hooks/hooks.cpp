@@ -215,6 +215,8 @@ namespace Hooks {
             std::this_thread::sleep_for(std::chrono::milliseconds(200));
         }
 
+        // check for IDXGISwapChain::Present() call. THEN initiate hooks.
+
         g_hWindow = U::GetProcessWindow();
 
         #ifdef DISABLE_LOGGING_CONSOLE

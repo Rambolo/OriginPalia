@@ -83,7 +83,7 @@ void ImGui::EndGroupPanel()
 	auto itemMax = GetItemRectMax();
 	//ImGui::GetWindowDrawList()->AddRectFilled(itemMin, itemMax, IM_COL32(255, 0, 0, 64), 4.0f);
 
-	auto labelRect = s_GroupPanelLabelStack.back();
+	auto& labelRect = s_GroupPanelLabelStack.back();
 	s_GroupPanelLabelStack.pop_back();
 
 	ImVec2 halfFrame = ImVec2(frameHeight * 0.25f, frameHeight) * 0.5f;

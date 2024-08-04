@@ -5,6 +5,9 @@
 #include <type_traits>
 
 #include "Configuration.h"
+#include "imgui_magma.h"
+#include "imgui_spectrum.h"
+#include "utils/fonts.h"
 
 namespace ImGui {
     void BeginGroupPanel(const char* name, const ImVec2& size = ImVec2(-1.0f, -1.0f));

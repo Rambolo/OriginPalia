@@ -36,19 +36,19 @@ BOOL WINAPI DllMain(const HMODULE hModule, const DWORD fdwReason, const LPVOID l
 DWORD WINAPI OnProcessAttach(const LPVOID lpParam) {
 	HMODULE hModule = static_cast<HMODULE>(lpParam);
 
-	int32_t GMallocOffset = 0x089603A0;
+	int32_t GMallocOffset = 0x0898E0A0; // 0.182.0
 
 	// Steam Support
 	char fileName[MAX_PATH];
 	GetModuleFileName(nullptr, fileName, MAX_PATH);
 	if (const std::string filePath(fileName); filePath.find("PaliaClientSteam-Win64-Shipping.exe") != std::string::npos) {
-		Offsets::GObjects		 = 0x08AAC680; // 1.181.0
-		Offsets::AppendString	 = 0x00CFFDD0; // 1.181.0
-		Offsets::GNames			 = 0x08A05CC0; // 1.181.0
-		Offsets::GWorld			 = 0x08C1D0B8; // 1.181.0
-		Offsets::ProcessEvent	 = 0x00ED9950; // 1.181.0
-		Offsets::ProcessEventIdx = 0x0000004D; // 1.181.0
-		GMallocOffset			 = 0x089CB620;
+		Offsets::GObjects		 = 0x08ADA3C0; // 0.182.0
+		Offsets::AppendString	 = 0x00D00F50; // 0.182.0
+		Offsets::GNames			 = 0x08A33A00; // 0.182.0
+		Offsets::GWorld			 = 0x08C47D50; // 0.182.0
+		Offsets::ProcessEvent	 = 0x00EDAAD0; // 0.182.0
+		Offsets::ProcessEventIdx = 0x0000004D; // 0.182.0
+		GMallocOffset			 = 0x089F9360; // 0.182.0
 	}
 
 	// Opens a console window (if enabled in console.hpp)
@@ -64,18 +64,6 @@ DWORD WINAPI OnProcessAttach(const LPVOID lpParam) {
 	}
 
 #ifdef FORCE_BACKEND
-	static HMODULE d3d12 = GetModuleHandle("D3D12.dll");
-	static HMODULE d3d12core = GetModuleHandle("D3D12Core.dll");
-	static HMODULE d3dscache = GetModuleHandle("D3DSCache.dll");
-	static HMODULE d3d11 = GetModuleHandle("d3d11.dll");
-
-	LOG("[+] Forced Renderer logs: D3D12.dll: %s, D3D12Core.dll: %s, D3DSCache.dll: %s, d3d11.dll: %s\n",
-		d3d12 ? "[X]" : "[ ]",
-		d3d12core ? "[X]" : "[ ]",
-		d3dscache ? "[X]" : "[ ]",
-		d3d11 ? "[X]" : "[ ]");
-
-	LOG("[!] Manually forcing DX12.\n");
 	U::SetRenderingBackend(DIRECTX12);
 #else
 	std::thread findRenderer([&]() {

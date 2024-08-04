@@ -7,7 +7,7 @@
 #include "utils/utils.hpp"
 
 #include "imgui.h"
-#include "impls/windows/imgui_impl_win32.h"
+#include "backends/imgui_impl_win32.h"
 
 #include <Windows.h>
 

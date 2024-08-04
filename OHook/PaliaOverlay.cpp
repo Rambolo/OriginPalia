@@ -9,7 +9,6 @@
 #include "Misc/Utils.h"
 
 #include "menu/menu.hpp"
-#include "fonts/fonts.h"
 
 #include <algorithm>
 #include <imgui_internal.h>

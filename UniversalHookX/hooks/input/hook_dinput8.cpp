@@ -1,5 +1,5 @@
-#include "../../backend.hpp"
-#include "./hook_dinput8.hpp"
+#include "backend.hpp"
+#include "hook_dinput8.hpp"
 
 #ifdef ENABLE_BACKEND_DI8
 
